@@ -28,7 +28,7 @@ for (let i = 0; i < totalDays; i++) {
     const monthKey = `${date.getFullYear()}-${date.getMonth()}`;
     if (!months[monthKey]) {
         months[monthKey] = {
-            name: date.toLocaleString('en-US', {month: 'short'}),
+            name: date.toLocaleString('en-US', { month: 'short' }),
             days: []
         };
     }
@@ -38,6 +38,10 @@ for (let i = 0; i < totalDays; i++) {
 
     const compareDate = new Date(date);
     compareDate.setHours(0, 0, 0, 0);
+
+    const dayNumber = i + 1;
+    const percent = ((dayNumber / totalDays) * 100).toFixed(2);
+    cell.title = `Day ${dayNumber} (${percent}%)`;
 
     if (compareDate < currentDate) {
         cell.classList.add('past');
