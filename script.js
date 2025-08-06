@@ -1,8 +1,17 @@
+const currentWallet = 150;
+//-------------------------------------------------------//
+//-------------------------------------------------------//
+//-------------------------------------------------------//
+const initialWallet = 150;
+const targetWallet = 2000;
+const totalDays = 201;
+const fixedStartDate = new Date("2025-08-05");
+//-------------------------------------------------------//
+//-------------------------------------------------------//
+//-------------------------------------------------------//
 const calendar = document.getElementById('calendar');
 const progressText = document.getElementById('progress-text');
 const progressBar = document.getElementById('progress-bar');
-
-const totalDays = 201;
 
 function parseDateFromURL() {
     const params = new URLSearchParams(window.location.search);
@@ -14,7 +23,6 @@ function parseDateFromURL() {
     return null;
 }
 
-const fixedStartDate = new Date("2025-08-05");
 fixedStartDate.setHours(0, 0, 0, 0);
 const currentDate = parseDateFromURL() || new Date();
 currentDate.setHours(0, 0, 0, 0);
@@ -81,3 +89,33 @@ for (const key in months) {
 
     calendar.appendChild(column);
 }
+
+const walletProgressText = document.getElementById('wallet-progress-text');
+const walletProgressBar = document.getElementById('wallet-progress-bar');
+
+function updateWalletProgress(current, initial, target) {
+    let text = '';
+    let width = 0;
+    let color = '';
+
+    if (current >= initial) {
+        const gain = current - initial;
+        const range = target - initial;
+        const percent = Math.min((gain / range) * 100, 100).toFixed(2);
+        text = `$${current - initial}/$${target} (${percent}%)`;
+        width = percent + '%';
+        color = '#27ae60';
+    } else {
+        const loss = initial - current;
+        const percent = Math.min((loss / initial) * 100, 100).toFixed(2);
+        text = `$${current} ↓ $${initial} (-${percent}%)`;
+        width = percent + '%';
+        color = '#e74c3c';
+    }
+
+    walletProgressText.textContent = text;
+    walletProgressBar.style.width = width;
+    walletProgressBar.style.backgroundColor = color;
+}
+
+updateWalletProgress(currentWallet, initialWallet, targetWallet);

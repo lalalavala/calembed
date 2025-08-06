@@ -66,3 +66,6 @@ h2 {
     background-color: #27ae60;
     color: white;
 }
+#wallet-progress-bar {
+    transition: width 0.3s ease;
+}
