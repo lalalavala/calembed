@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>200-D</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #1e1e2f;
+            color: #e0e0e0;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 8px;
+        }
+        .cell {
+            padding: 12px;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease;
+        }
+        .cell:hover {
+            transform: scale(1.05);
+        }
+        .past {
+            background-color: #c0392b;
+            color: white;
+        }
+        .future {
+            background-color: #27ae60;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h2>200 days</h2>
+<div class="grid" id="calendar"></div>
+
+<script>
+    const calendar = document.getElementById('calendar');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    for (let i = 0; i < 200; i++) {
+        const date = new Date();
+        date.setDate(today.getDate() + i);
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+
+        const compareDate = new Date(date);
+        compareDate.setHours(0, 0, 0, 0);
+
+        if (compareDate < today) {
+            cell.classList.add('past');
+        } else if (compareDate.getTime() === today.getTime()) {
+            const now = new Date();
+            const hoursPassed = now.getHours() + now.getMinutes() / 60;
+            const percentPassed = Math.min((hoursPassed / 24) * 100, 100).toFixed(2);
+            cell.style.background = linear-gradient(to right, #e74c3c ${percentPassed}%, #f1c40f ${percentPassed}%);
+            cell.style.color = "black";
+        } else {
+            cell.classList.add('future');
+        }
+
+        cell.textContent = date.toLocaleDateString('ru-RU');
+        calendar.appendChild(cell);
+    }
+</script>
+</body>
+</html>
