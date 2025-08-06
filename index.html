@@ -66,7 +66,7 @@
             const now = new Date();
             const hoursPassed = now.getHours() + now.getMinutes() / 60;
             const percentPassed = Math.min((hoursPassed / 24) * 100, 100).toFixed(2);
-            cell.style.background = linear-gradient(to right, #e74c3c ${percentPassed}%, #f1c40f ${percentPassed}%);
+            cell.style.background = 'linear-gradient(to right, #e74c3c ' + percentPassed + '%, #f1c40f' + percentPassed +'%)';
             cell.style.color = "black";
         } else {
             cell.classList.add('future');
