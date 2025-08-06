@@ -1,0 +1,68 @@
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background-color: #1e1e2f;
+    color: #e0e0e0;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+.progress {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.progress-bar-container {
+    background-color: #444;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+.progress-bar {
+    height: 100%;
+    background-color: #27ae60;
+    transition: width 0.3s ease;
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.month-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.month-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+.cell {
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+}
+.cell:hover {
+    transform: scale(1.05);
+}
+.past {
+    background-color: #c0392b;
+    color: white;
+}
+.future {
+    background-color: #27ae60;
+    color: white;
+}
