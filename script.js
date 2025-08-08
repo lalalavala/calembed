@@ -67,9 +67,12 @@ for (let i = 0; i < totalDays; i++) {
     months[monthKey].days.push(cell);
 }
 
-const daysPassed = Math.floor((currentDate - fixedStartDate) / (1000 * 60 * 60 * 24)) + 1;
+const now = parseDateFromURL() || new Date();
+const msPassed = now - fixedStartDate;
+const daysPassed = msPassed / (1000 * 60 * 60 * 24);
 const progress = Math.min((daysPassed / totalDays) * 100, 100).toFixed(2);
-progressText.textContent = `${Math.max(daysPassed, 0)}/${totalDays} (${progress}%)`;
+
+progressText.textContent = `${daysPassed.toFixed(1)}/${totalDays} (${progress}%)`;
 progressBar.style.width = `${progress}%`;
 
 for (const key in months) {
