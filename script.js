@@ -1,9 +1,9 @@
-const currentWallet = 150;
+const currentWallet = 86;
 //-------------------------------------------------------//
 //-------------------------------------------------------//
 //-------------------------------------------------------//
-const initialWallet = 150;
-const targetWallet = 2000;
+const initialWallet = 86;
+const targetWallet = 2500;
 const totalDays = 201;
 const fixedStartDate = new Date("2025-08-05");
 //-------------------------------------------------------//
